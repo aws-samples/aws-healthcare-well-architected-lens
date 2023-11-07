@@ -1,1236 +1,1226 @@
 {
-    "schemaVersion": "2021-11-01",
-    "name": "Healthcare Industry Lens",
-    "description": "Best practices and guidance for how to design, deploy, and manage your healthcare workloads in the AWS Cloud.",
-    "pillars": [
+  "schemaVersion": "2021-11-01",
+  "name": "Healthcare Industry Lens",
+  "description": "Best practices and guidance for how to design, deploy, and manage your healthcare workloads in the AWS Cloud.",
+  "pillars": [
+    {
+      "id": "OPS1",
+      "name": "Operational Excellence",
+      "questions": [
         {
-            "id": "HCL_OPS1",
-            "name": "Operational Excellence",
-            "questions": [
-                {
-                    "id": "HCL_OPS1",
-                    "title": "Risk Management",
-                    "description": "Have you defined a formal risk management program?",
-                    "helpfulResource": {
-                        "displayText": "Many regulatory frameworks are intended to reduce risk in one way or another. Organizations usually understand that they must reduce their risk, but may struggle to determine what the appropriate risk appetite is and how to manage it. This is accomplished using a documented risk management program. In healthcare, the risk management program is designed to safeguard patient data, as well as the overall organization s assets and reputation.",
-                        "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
-                    },
-                    "choices": [
-                        {
-                            "id": "HCLS_OPS1_1",
-                            "title": "Create and maintain a risk management program",
-                            "helpfulResource": {
-                                "displayText": "The risk management program is designed to safeguard patient data, as well as the overall organization s assets and reputation.  For example, a healthcare provider s risk management program also covers clinical quality, which is critical to reducing potential patient risk.  Healthcare organizations should create a comprehensive risk management program that includes all operational, clinical, strategic, financial, legal, environmental, and any other potential risk domains.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": " AWS publishes the Amazon Web Services: Risk and Compliance whitepaper that outlines the mechanisms used to manage risk on the AWS side of the shared responsibility model. This whitepaper also provides tools that customers can use to ensure these mechanisms are being implemented effectively. ",
-                                "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-risk-and-compliance/welcome.html"
-                            }
-                        },
-                        {
-                            "id": "HCLS_OPS1_2",
-                            "title": "Create and maintain a risk authority team",
-                            "helpfulResource": {
-                                "displayText": "The risk authority within the organization (for example, board of directors, chief risk officers, or business risk officers) must evaluate the criticality of a business process (and the underlying workloads that support that process) and specify the level of availability they require for the process. Consider the potential impact a disruption may have on the process, organization, and customers. Weigh the impact against the cost of operating the workload in a high availability mode, consequences for business agility, and pace of innovation. Working backwards from established risk appetites allows you to define operational priorities and corresponding cloud architectures that can meet your business objectives.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": " AWS publishes the Amazon Web Services: Risk and Compliance whitepaper that outlines the mechanisms used to manage risk on the AWS side of the shared responsibility model. This whitepaper also provides tools that customers can use to ensure these mechanisms are being implemented effectively. ",
-                                "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-risk-and-compliance/welcome.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCLS_OPS1_1 && HCLS_OPS1_2",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "(!HCLS_OPS1_1) || (!HCLS_OPS1_2)",
-                            "risk": "HIGH_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_OPS2",
-                    "title": "Policies and Procedures",
-                    "description": "What policies and procedures has your organization adopted for cloud governance?",
-                    "helpfulResource": {
-                        "displayText": "Cloud governance is a set of policies and procedures that outline, or govern, how an organization manages their cloud workloads.  A mature governance program requires understanding the compliance objectives and requirements and establishing a control environment that meets those objectives and requirements.",
-                        "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
-                    },
-                    "choices": [
-                        {
-                            "id": "HCLS_OPS2_1",
-                            "title": "Create policies and procedures to govern cloud workloads",
-                            "helpfulResource": {
-                                "displayText": " As outlined in the Amazon Web Services: Risk and Compliance whitepaper, AWS customers are responsible for maintaining adequate governance over their entire IT control environment, regardless of how or where IT is deployed. Recommended practices include understanding the required compliance objectives and requirements (from relevant sources), establishing a control environment that meets those objectives and requirements, understanding the validation required based on the organization s risk tolerance and applicable regulatory requirements, and verifying the operating effectiveness of their control environment",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": " Strong customer compliance and governance on AWS should include reviewing the AWS shared responsibility model, AWS security documentation, AWS compliance reports, and other information available from AWS, together with other customer-specific documentation. Try to understand as much of the entire IT environment as possible, and document all compliance requirements into a comprehensive cloud control framework. Design and implement control objectives to meet the enterprise compliance requirements as laid out in the AWS shared responsibility model.  Identify and document controls owned by outside parties.  Verify that all control objectives are met and all key controls are designed and working.",
-                                "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-risk-and-compliance/welcome.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCLS_OPS2_1",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "(!HCLS_OPS2_1)",
-                            "risk": "HIGH_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_OPS3",
-                    "title": "Mapping Security Controls",
-                    "description": "How do you map security controls to compliance requirements?",
-                    "helpfulResource": {
-                        "displayText": "Organizations that host and process health data must verify that they are adhering to all applicable regulatory frameworks and standards. As healthcare organizations evolve and grow, they may either want, or be required, to adhere to multiple regulations or certifications. For example, a European organization may be required to meet GDPR and additional country-specific regulations in each country it operates in.",
-                        "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
-                    },
-                    "choices": [
-                        {
-                            "id": "HCLS_OPS3_1",
-                            "title": "Determine regulatory frameworks and security controls that are applicable to your business and your cloud workload",
-                            "helpfulResource": {
-                                "displayText": "Organizations that host and process health data must verify that they are adhering to all applicable regulatory frameworks and standards. As healthcare organizations evolve and grow, they may either want, or be required, to adhere to multiple regulations or certifications.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Determine which regulatory frameworks and security controls that apply to your business and your cloud workload",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
-                            }
-                        },
-                        {
-                            "id": "HCLS_OPS3_2",
-                            "title": "Map applicable frameworks and controls to AWS controls to align with regulatory frameworks",
-                            "helpfulResource": {
-                                "displayText": "There are two common approaches to addressing multiple compliance regimes. First, organizations may choose to address each set of requirements from the beginning and develop mappings unique to each. Alternatively, organizations can choose to map to a common security framework, and leverage published controls mappings from that framework to many others in a hub-and-spoke model. AWS recommends the latter approach where possible to avoid duplicating effort.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Create a crosswalk to map your AWS controls to a common security control framework. Use this crosswalk to connect controls in your cloud environment to the regulation standards as required.   As an example, here are steps you might take if you use NIST 800-53 as your security framework, and apply it to the HIPAA Security Rule on AWS: 1) Map NIST 800-53 to applicability within the AWS environment, considering the shared responsibility model with AWS and any third parties you may work with. 2) Use prebuilt AWS compliance checks for NIST or other frameworks with AWS config conformance packs, as well as implement any additional custom checks to monitor your AWS environments. Implement immutable logging to archive compliance posture over time. 3) Use NIST Special Publication 800-66 to map controls from NIST 800-53 to the HIPAA Security Rule",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCLS_OPS3_1 && HCLS_OPS3_2",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "(!HCLS_OPS3_1) || (!HCLS_OPS3_2)",
-                            "risk": "HIGH_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_OPS4",
-                    "title": "Employee Training",
-                    "description": "How do you educate employees on access to sensitive data? ",
-                    "helpfulResource": {
-                        "displayText": "Organizations that host or process PHI should ensure that employees who have access to healthcare data, either intentionally or accidentally as part of their job function, are trained on the rules and regulations that govern the organization. Employees should have knowledge on what to do when viewing sensitive data",
-                        "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
-                    },
-                    "choices": [
-                        {
-                            "id": "HCL_OPS4_1",
-                            "title": "Ensure employees who may have access to sensitive healthcare data are trained on the rules and regulations.",
-                            "helpfulResource": {
-                                "displayText": "Employees should have knowledge on what to do when viewing sensitive data. They should know how and where to host or process that data, and how to protect it. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Train employees on any other regulation-based requirements, such as breach disclosure. Document all of this in your risk management program.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
-                            }
-                        },
-                        {
-                            "id": "HCL_OPS4_2",
-                            "title": "Create and document a policy and procedure aligned to each control and safeguard",
-                            "helpfulResource": {
-                                "displayText": "Organizations that are hosting and processing sensitive healthcare data should have a documented policy that aligns with each control or safeguard in place to secure the data. In addition, each policy should have an associated procedure document that outlines how the policy will be implemented. These policy and procedure documents will help educate employees on the safeguards used, and can help demonstrate your compliance posture to your stakeholders. These documents help create a stronger culture of compliance for your organization.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Create and document a policy and procedure aligned to each control and safeguard to secure the data. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_OPS4_1 && HCL_OPS4_2",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "(!HCL_OPS4_1)",
-                            "risk": "HIGH_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_OPS5",
-                    "title": "Continuous Compliance",
-                    "description": "How do you demonstrate continuous compliance?",
-                    "helpfulResource": {
-                        "displayText": "Managing compliance manually can be time-consuming, complex, and confusing. Healthcare organizations must be able to demonstrate their compliance posture. Evidence that includes the safeguards used to protect sensitive healthcare data, as well as the documented policies and procedures, can all be used to demonstrate compliance. ",
-                        "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
-                    },
-                    "choices": [
-                        {
-                            "id": "HCL_OPS5_1",
-                            "title": "Partition workloads involving sensitive data into separate environments.",
-                            "helpfulResource": {
-                                "displayText": "Minimize access to sensitive data by isolating workloads to separate environments requiring additional controls for access. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/operate.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Segment your environment by AWS accounts, VPCs, or Amazon Simple Storage Service buckets. Minimize using sensitive data in non-production environments.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
-                            }
-                        },
-                        {
-                            "id": "HCL_OPS5_2",
-                            "title": "Architect and build with the ability to generate evidence that demonstrate continuous compliance",
-                            "helpfulResource": {
-                                "displayText": "Healthcare organizations must be able to demonstrate their compliance posture.  Evidence that includes the safeguards used to protect sensitive healthcare data, as well as the documented policies and procedures, can all be used to demonstrate compliance. The cloud services used to architect a compliant foundation in the cloud, can also be used to gather the necessary evidence to demonstrate compliance posture. For example, using infrastructure as code, coupled with a software development lifecycle, can demonstrate a mature change management process, which is an important compliance control. Being able to demonstrate the full scope of a compliance posture is critical for all stakeholders, whether that is an organizations leadership, shareholders, customers, and patients.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/operate.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Use managed services from AWS or third-party solutions, such as those available in AWS Marketplace can simplify your approach towards demonstrating continuous compliance.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
-                            }
-                        },
-                        {
-                            "id": "HCL_OPS5_3",
-                            "title": "Identify resources in the cloud environment",
-                            "helpfulResource": {
-                                "displayText": "An accurate representation of your cloud environments is necessary to demonstrate continuous compliance. Understand what AWS resources exist and how they interact with each other. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/operate.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Use services like AWS Config to identify all the resources and how they are configured and AWS X-Ray to understand how different resources in your system interact together. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
-                            }
-                        },
-                        {
-                            "id": "HCL_OPS5_4",
-                            "title": "Restrict resources and applications to pre-defined configurations",
-                            "helpfulResource": {
-                                "displayText": "Coupling AWS Config with infrastructure as code will allow you to test application configurations before they are deployed in your environment. Apply governance to your AWS deployments using infrastructure as code tools like AWS CloudFormation, AWS Cloud Development Kit (AWS CDK), Terraform, and Service Catalog.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/operate.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Verify that all configurations are secure-by-default with best practices around encryption, logging, and least privilege.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
-                            }
-                        },
-                        {
-                            "id": "HCL_OPS5_5",
-                            "title": "Implement compliance-as-code for configuration",
-                            "helpfulResource": {
-                                "displayText": "For each configuration you specify, test the controls you put in place. Use AWS Config as the central location to evaluate configuration changes. Where possible, use AWS Config managed rules, but also implement custom evaluations with AWS Lambda, fully capturing environment configuration. Configuration triggers will also shorten the time to identify AWS resources that are out of compliance compared to periodic triggers. This helps you demonstrate your compliance posture by automatically building and maintaining a list of resources within your AWS environment. It also allows you to continuously evaluate your compliance posture against the technical controls identified by your organization. For example, you can create an AWS Config rule that marks an Amazon S3 bucket as non-compliant if server-side encryption is not enabled or the Amazon S3 bucket policy allows unencrypted uploads. AWS provides sample rules bundled into conformance packs that align with many common regulatory frameworks and best practices, allowing you to start creating a compliance monitoring solution.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/operate.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": " Use AWS Config as the central location to evaluate configuration changes. Where possible, use AWS Config managed rules, but also implement custom evaluations with AWS Lambda, fully capturing environment configuration.  AWS provides sample rules bundled into conformance packs that align with many common regulatory frameworks and best practices, allowing you to start creating a compliance monitoring solution. ",
-                                "url": "https://docs.aws.amazon.com/config/latest/developerguide/conformancepack-sample-templates.html"
-                            }
-                        },
-                        {
-                            "id": "HCL_OPS5_6",
-                            "title": "Centralize security and compliance findings",
-                            "helpfulResource": {
-                                "displayText": "Many customers will use multiple AWS accounts (such as development, test, and prod, or department-specific accounts). Configuration management, while important, is not the only set of technical controls you may require.  Many customers will use multiple AWS accounts (such as development, test, and prod, or department-specific accounts). Configuration management, while important, is not the only set of technical controls you may require. For example, you may combine your configuration posture with additional findings, from third-party solutions or AWS security services like Amazon GuardDuty. These findings should be sent to a single, centralized location.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/operate.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Group the technical controls and findings as evidence using a solution such as AWS Security Hub.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
-                            }
-                        },
-                        {
-                            "id": "HCL_OPS5_7",
-                            "title": "Map technical controls to compliance requirements using automation.",
-                            "helpfulResource": {
-                                "displayText": "Simplify maintaining a complete view of your compliance posture by automatically mapping controls and findings to your internal policies. For example, if you have a compliance policy around encryption at-rest, you may have individual controls on the configuration of each AWS resource to verify encryption is enabled.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/operate.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Use AWS Audit Manager to automate evidence collection from a variety of sources within AWS, including Security Hub and Config. Using prebuilt frameworks within AWS Audit Manager, you can manually specify a list of controls and policies that are important to your organization.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
-                            }
-                        },
-                        {
-                            "id": "HCL_OPS5_8",
-                            "title": "Use up-to-date artifacts.",
-                            "helpfulResource": {
-                                "displayText": "The creation of artifacts that document the compliance posture of a cloud environment should be automated. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/operate.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Use services such as AWS Config, AWS Audit Manager, and AWS Security Hub to automatically collect and report the compliance state of a cloud environment.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_OPS5_1 && HCL_OPS5_2 && HCL_OPS5_3 && HCL_OPS5_4 && HCL_OPS5_5 && HCL_OPS5_6 && HCL_OPS5_7 && HCL_OPS5_8",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "(!HCL_OPS5_1) || (!HCL_OPS5_3) || (!HCL_OPS5_4) || (!HCL_OPS5_8)",
-                            "risk": "HIGH_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_OPS6",
-                    "title": "Automate Remediation",
-                    "description": "How do you automate remediation of compliance violations?",
-                    "helpfulResource": {
-                        "displayText": "There are several key concepts to consider when creating an automated remediation solution. While your organization is responsible for compliance for your environment, per the shared responsibility model, the following approach will make it easier to demonstrate compliance on AWS. In general, use managed services either from AWS or a third-party solution, such as one available in AWS Marketplace, to simplify your approach.  Similar to the recommendations for demonstrating continuous compliance, define compliance requirements and create associated policies and procedures for remediation before creating the remediation solution.",
-                        "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/operate.html"
-                    },
-                    "choices": [
-                        {
-                            "id": "HCL_OPS6_1",
-                            "title": "Automate remediation actions for non-compliant resources",
-                            "helpfulResource": {
-                                "displayText": "Automate remediation of configurations that are out of compliance with your technical controls for rapid, consistent application of your policies. Event-driven architectures improve remediation times. Not everything can be predicted ahead of time. Certain remediations may be manual at first, but investigated when they occur and automated when possible in future occurrences.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/operate.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Develop automated remediations. This might involve several steps like specifying controls, mechanisms to identify when configuration changes happen, implement remediations and rerunning the evaluations. Use services like AWS Config, Security Hub and Systems Manager to implement automations. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_OPS6_1",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                }
-            ]
+          "id": "OPS1",
+          "title": "Have you defined a formal risk management program?",
+          "description": "In healthcare, the risk management program is designed to safeguard patient data, as well as the overall organization’s assets and reputation.",
+          "helpfulResource": {
+            "displayText": "Many regulatory frameworks are intended to reduce risk in one way or another. Organizations usually understand that they must reduce their risk, but may struggle to determine what the appropriate risk appetite is and how to manage it. This is accomplished using a documented risk management program. In healthcare, the risk management program is designed to safeguard patient data, as well as the overall organization s assets and reputation.",
+            "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
+          },
+          "choices": [
+            {
+              "id": "OPS1_1",
+              "title": "Create and maintain a risk management program",
+              "helpfulResource": {
+                "displayText": "Healthcare organizations should create a comprehensive risk management program that includes all operational, clinical, strategic, financial, legal, environmental, and any other potential risk domains. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
+              },
+              "improvementPlan": {
+                "displayText": "Amazon Web Services: Risk and Compliance whitepaper",
+                "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-risk-and-compliance/welcome.html"
+              }
+            },
+            {
+              "id": "OPS1_2",
+              "title": "Create and maintain a risk authority team",
+              "helpfulResource": {
+                "displayText": "Creating an effective risk management program for the cloud should be defined by the appropriate risk authority team.  The risk authority within the organization (for example, board of directors, chief risk officers, or business risk officers) must evaluate the criticality of a business process (and the underlying workloads that support that process) and specify the level of availability they require for the process. Consider the potential impact a disruption may have on the process, organization, and customers. Weigh the impact against the cost of operating the workload in a high availability mode, consequences for business agility, and pace of innovation. Working backwards from established risk appetites allows you to define operational priorities and corresponding cloud architectures that can meet your business objectives. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
+              },
+              "improvementPlan": {
+                "displayText": "Amazon Web Services: Risk and Compliance whitepaper",
+                "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-risk-and-compliance/welcome.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "OPS1_1 && OPS1_2",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "(!OPS1_1) || (!OPS1_2)",
+              "risk": "HIGH_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
         },
         {
-            "id": "HCL_SEC1",
-            "name": "Security",
-            "questions": [
-                {
-                    "id": "HCL_SEC1",
-                    "title": "Identity and access management",
-                    "description": "How do you identify where health data is in your environment?",
-                    "choices": [
-                        {
-                            "id": "HCL_SEC1_1",
-                            "title": "Determine applicable regulatory frameworks and controls as it pertains to data classification",
-                            "helpfulResource": {
-                                "displayText": " It is critical that organizations understand what types of data are being hosted and processed, and where that data resides. This understanding is a basis for ensuring that the right controls are in place for aligning with relevant regulatory frameworks and standards. Data classification also aids in traceability and access monitoring of sensitive data.\n\n"
-                            },
-                            "improvementPlan": {
-                                "displayText": "You can start by creating policies and procedures that align to the relevant regulatory frameworks. The policies and procedures should outline a data classification strategy that fits your business and regulatory requirements. ",
-                                "url": "https://docs.aws.amazon.com/whitepapers/latest/data-classification/welcome.html"
-                            }
-                        },
-                        {
-                            "id": "HCL_SEC1_2",
-                            "title": "Create and document a data classification strategy",
-                            "helpfulResource": {
-                                "displayText": "Based on the business requirements, and any applicable regulatory frameworks, implement a data classification policy. This policy should extend beyond simply marking health data, but should include other sensitive or confidential data, as well as public data.",
-                                "url": "https://docs.aws.amazon.com/whitepapers/latest/data-classification/welcome.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Make sure that health data is classified in accordance with the proper regulatory frameworks that your business aligns to.  The Data Classification: Secure Cloud Adoption whitepaper provides examples of how to categorize data, and how to implement a data classification strategy that implements the appropriate controls based on the data category.  ",
-                                "url": "https://docs.aws.amazon.com/whitepapers/latest/data-classification/welcome.html"
-                            }
-                        },
-                        {
-                            "id": "HCL_SEC1_3",
-                            "title": "Select the appropriate cloud deployment model according to your needs, the type of data you handle, and the assessed risk",
-                            "helpfulResource": {
-                                "displayText": "Select the appropriate cloud deployment model according to your specific needs, the type of data you handle, and the assessed risk. ",
-                                "url": "https://docs.aws.amazon.com/whitepapers/latest/data-classification/welcome.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Depending on the classification of the data, apply the relevant security controls (such as encryption) within your cloud environment. AWS also recommends that health data be classified and labeled as such, simplifying audits and ensuring that the proper technical controls can be implemented.\n\nIf your environment uses multiple AWS accounts, designate specific accounts to host and process health data to simplify managing where health data is located. For example, if your account structure mirrors your software development lifecycle with accounts designated for development, testing, staging, and production, the production and staging accounts may be designated as  health data  accounts and are therefore documented as containing health data. Then, implement procedures and controls in the development and testing accounts to prevent health data from being stored there.\n\nYou can also assign tags to your AWS resources, which consist of a user-defined key and value. Tags help you manage, identify, organize, search for, and filter resources. Create tags to categorize resources by purpose, owner, environment, or other criteria. Use tags to help identify and document resources and objects that contain sensitive health data in accordance you re your data classification strategy. Do not store sensitive health data in tags, as they are not intended to be used for private or sensitive data. Finally, access to resources can be controlled through tags. ",
-                                "url": "https://docs.aws.amazon.com/whitepapers/latest/data-classification/welcome.html"
-                            }
-                        },
-                        {
-                            "id": "HCL_SEC1_4",
-                            "title": "Implement automated data classification",
-                            "helpfulResource": {
-                                "displayText": "Classifying data using an automated process will help ensure data is properly classified early in the data lifecycle and can help ensure the proper controls are in place as soon as the data is received.",
-                                "url": "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Use an automated system to detect and classify data.  For example, Amazon Macie is a fully managed data security service that can help you identify sensitive data residing in Amazon S3. Macie automates the discovery of sensitive data, such as personally identifiable information (PII), to provide you with a better understanding of the data that your organization stores in Amazon S3. Macie also provides you with an inventory of your Amazon S3 buckets, and it automatically evaluates and monitors those buckets for security and access control.  Services like Amazon Comprehend (PII) and Amazon Comprehend Medical (PHI) can be used to evaluate unstructured text data in your environment. Amazon Comprehend will provide a confidence score to measure the confidence that the data contains PHI as defined by HIPAA. This score can help you determine the sensitivity of the data reviewed. ",
-                                "url": "https://docs.aws.amazon.com/whitepapers/latest/data-classification/welcome.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_SEC1_1 && HCL_SEC1_2 && HCL_SEC1_3 && HCL_SEC1_4",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "(!HCL_SEC1_1) || (!HCL_SEC1_2) || (!HCL_SEC1_3) || (!HCL_SEC1_4)",
-                            "risk": "HIGH_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_SEC2",
-                    "title": "Identity and access management",
-                    "description": "How are you implementing least privilege access to health data?",
-                    "choices": [
-                        {
-                            "id": "HCL_SEC2_1",
-                            "title": "Use identity and access management to control access to systems, resources, and data",
-                            "helpfulResource": {
-                                "displayText": "Use AWS Identity and Access Management to control access to AWS services and resources. Use IAM to control who is authenticated to the environment and who is authorized to use services and resources.  Health data on the cloud is typically stored in databases, file systems, and object storage services. The optimal storage service is determined by the data type (for example, structured vs. unstructured) and access patterns required by the workload.  For each data store, use a combination of IAM permissions and any additional authorization methods to secure stored health data.",
-                                "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": " As outlined in the IAM grant least privilege documentation, start with a minimum set of permissions, and grant additional permissions as necessary. This approach exposes you to less risk than starting with permissions that are too lenient and then trying to tighten them later.\n\nFor object storage on Amazon S3, use access policies attached to your resources (buckets and objects) to implement additional authorization if necessary. More information can be found at identity and access management in Amazon S3. Health data residing in a data lake based in Amazon S3, including those managed by AWS Lake Formation, should consider implementing column, row, and cell-level authorization controls where appropriate.\n\nUse operating system file system permissions to limit access to health data stored on instance storage, including when using managed storage services such as Amazon Elastic File System and Amazon FSx for Lustre. Additionally, use resource and condition statements within IAM policies to limit IAM principal access to file systems when using managed storage services.\n\nControl access to managed file systems through narrowly scoped security groups to prevent unauthorized resources from connecting to the file system.\n\nSensitive data stored in managed database services, such as Amazon Aurora, Amazon Relational Database Service, Amazon Redshift, and Amazon DynamoDB, implement authorization rules using a combination of IAM permissions and any additional authorization mechanisms available in the AWS service. For example, Amazon Redshift supports access controls as the column-level to limit users access to columns that may contain sensitive data. The AWS documentation for each managed database service contains a section titled Identity and Access Management which documents the access configuration options. ",
-                                "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_SEC2_1",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "(!HCL_SEC2_1)",
-                            "risk": "HIGH_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_SEC3",
-                    "title": "Detective controls",
-                    "description": "How are you logging access to health data?",
-                    "choices": [
-                        {
-                            "id": "HCL_SEC3_1",
-                            "title": "Log access to systems, resources, and data in accordance with your policies and procedures",
-                            "helpfulResource": {
-                                "displayText": "If your workload hosts health data, then under the Architecting for HIPAA Security and Compliance on Amazon Web Services whitepaper you must implement and maintain logging of access to that data in accordance with the regulatory frameworks applicable to your workload.",
-                                "url": "https://docs.aws.amazon.com/whitepapers/latest/architecting-hipaa-security-and-compliance-on-aws/auditing-back-ups-and-disaster-recovery.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "AWS makes it easy to log access to health data stored in many services with AWS CloudWatch and AWS CloudTrail. AWS also provides service-specific mechanism to audit access to health data and health data systems. For audit logging details, see the Architecting for HIPAA Security and Compliance on Amazon Web Services whitepaper. ",
-                                "url": "https://docs.aws.amazon.com/whitepapers/latest/architecting-hipaa-security-and-compliance-on-aws/auditing-back-ups-and-disaster-recovery.html"
-                            }
-                        },
-                        {
-                            "id": "HCL_SEC3_2",
-                            "title": "Configure audit logs to be centralized and immutable",
-                            "helpfulResource": {
-                                "displayText": "Configure logging to save to a centralized location and the logs made immutable to verify their integrity in the event of a forensic requirement. Prevent modification of log data by creating an AWS account in your organization that is designated to host audit logs and implement strict authorization rules. AWS audit and logging services, such as CloudWatch and CloudTrail, can save logs to a central location, yielding one set of logs that encompass an entire IT environment.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/detective-controls.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Use CloudTrail to log actions taken by users, roles, and AWS services across your AWS infrastructure. Enable CloudTrail log file integrity validation to prevent modification, deletion, or forgery of CloudTrail log files without detection.\n\nEnable AWS Config in all AWS accounts to assess, audit, and evaluate resources within your AWS environment. This provides an audit record of AWS resource configurations over time.\n\nCapture network layer logs to track the transport layer activity VPC using VPC Flow Logs. When using Elastic Load Balancing, enable access logs to capture detailed information about the requests received and processed by one or more load balancers, including client IP addresses, request paths, and server responses. Similar approaches should be employed for other AWS services, such as Amazon API Gateway, which offer similar functionality.\n\nConfigure operating system and application logs, including managed compute services like AWS Lambda, Amazon ECS, and Amazon EKS, to send logs to CloudWatch log groups.  Develop processes and coding standards to avoid putting sensitive information into logs. Additionally, use AWS encryption services to encrypt log data. When using managed database services to store health data, such as Amazon RDS and Amazon Redshift, enable database level audit logging to collect information about connections and user activity within the database.  You can use service features to publish database logs to CloudWatch, simplifying centralized log management.\n\nEnable and configure Amazon S3 access logging for any Amazon S3 buckets that may contain sensitive health data. Amazon S3 Access Logs record every upload, download, and modification to stored objects.\n\nRefer to the AWS documentation for each AWS service to find the supported service-specific logging options.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-1.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_SEC3_1 && HCL_SEC3_2",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "(!HCL_SEC3_1) || (!HCL_SEC3_2)",
-                            "risk": "HIGH_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_SEC4",
-                    "title": "Detective controls",
-                    "description": "How often do you review audit logs?",
-                    "choices": [
-                        {
-                            "id": "HCL_SEC4_1",
-                            "title": "Create, document, and follow a policy and procedure to regularly review audit logs",
-                            "helpfulResource": {
-                                "displayText": "In addition to the creation and documentation of an audit log review policy and procedure, organizations who are auditing access to health data should also have systems and procedures in place to review the audit logs on a regular basis.",
-                                "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Facilitate audits by collecting all logs in a centralized location. For example, AWS CloudTrail can be configured to deliver logs from multiple accounts to a single Amazon S3 bucket. This provides both an easier location allowing regular review of the logs, while limiting the scope of access required for the reviewer by limiting them to a single location rather than multiple accounts.\n\nEnable CloudTrail Insights to identify unusual activity in CloudTrail logs in order to help improve the audit log review process. ",
-                                "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html"
-                            }
-                        },
-                        {
-                            "id": "HCL_SEC4_2",
-                            "title": "Automate alerts for potential anomalies detected in logs",
-                            "helpfulResource": {
-                                "displayText": "Use automated systems that will generate alerts if anomalies are detected in logs",
-                                "url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Anomaly_Detection_Alarm.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Create CloudWatch alarms based on anomaly detection that uses previously recorded metrics to create a model of expected results.  You can also use the Amazon OpenSearch Service to detect anomalies in logs. \n\nEnable CloudTrail Insights to detect unusual operational activity that is recorded in your CloudTrail audit logs. \n\nReview all applicable regulatory frameworks and standards and ensuring the specific requirements are being met.  \n\nConfigure all alarms to be received by an identified owner, ensuring that the alarm is acknowledged, triaged, and actioned. \n\nFinally, create and follow a procedure that outlines a regular cadence to review all automation configurations for continued accuracy, sufficiency, and relevance of the alerts.",
-                                "url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Anomaly_Detection_Alarm.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_SEC4_1 && HCL_SEC4_2",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "(!HCL_SEC4_1) || (!HCL_SEC4_2)",
-                            "risk": "HIGH_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_SEC5",
-                    "title": "Infrastructure protection",
-                    "description": "How does your organization protect critical systems?",
-                    "helpfulResource": {
-                        "displayText": "Follow Well-Architected best practices for infrastructure protection when designing and managing your transactional systems of record.",
-                        "url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/infrastructure-protection.html"
-                    },
-                    "choices": [
-                        {
-                            "id": "HCL_SEC5_1",
-                            "title": "Implement security controls necessary to protect the infrastructure within the AWS account",
-                            "helpfulResource": {
-                                "displayText": "Security controls are the technical or administrative mechanisms you put in place to implement the standards. All security controls map to standards, but not all standards map to security controls. Testing of security controls is designed to monitor and measure whether you are effectively meeting the defined standards.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/welcome.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Migrated healthcare workloads may have dependencies on technologies, older software applications, and host operating systems. For such systems, limit network access to sensitive hosts, apply the latest available security patches, and the employ monitoring practices described above. \n\nEnable Amazon GuardDuty in accounts that host and process PHI to add intelligent threat detection to your environment. GuardDuty continuously monitors your AWS accounts and workloads for malicious activity and provides detailed security findings. You can also create custom, automated responses to GuardDuty findings using Amazon CloudWatch Events.\n\nFor details on workload protection, see the security pillar of the AWS Well-Architected Framework. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/welcome.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_SEC5_1",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "(!HCL_SEC5_1)",
-                            "risk": "HIGH_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_SEC6",
-                    "title": "Data protection",
-                    "description": "How do you determine and enforce data residency requirements?",
-                    "choices": [
-                        {
-                            "id": "HCL_SEC6_1",
-                            "title": "Determine applicable regulatory frameworks and controls as it pertains to data locality",
-                            "helpfulResource": {
-                                "displayText": "Many healthcare organizations fall under data locality requirements or regulations on where data may be physically located.  Begin by reviewing these requirements within any applicable regulatory frameworks.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/data-protection.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Begin by reviewing these requirements within any applicable regulatory frameworks. To determine applicable regulatory frameworks, start with local regulations and frameworks for the country where your sensitive healthcare data is generated, hosted, and processed. Engage with legal counsel who can help you define the scope of the local regulations, as well as any additional regulation frameworks that may apply to you. "
-                            }
-                        },
-                        {
-                            "id": "HCL_SEC6_2",
-                            "title": "Enforce data locality requirements by implementing controls",
-                            "helpfulResource": {
-                                "displayText": "Once the determination of requirements has been made and documented, technical controls can be put in place to enforce them. ",
-                                "url": "http://aws.amazon.com/about-aws/whats-new/2021/11/aws-control-tower-controls-data-residency-requirements/"
-                            },
-                            "improvementPlan": {
-                                "displayText": "The AWS Cloud spans many Availability Zones and geographic Regions around the world. Each AWS Region is fully isolated, and comprised of multiple Availability Zones. AWS also provides mechanisms for customers to allow or deny access to specific Regions.  When using AWS Organizations, implement service control policies (SCP) to limit access to specific AWS services or resources. SCPs can be used with AWS Control Tower data residency controls to create additional guardrails to enforce data locality requirements. Continuing the example above, you can implement a service control policy that allows only access to the Europe (Frankfurt) Region and denies access to all others.",
-                                "url": "http://aws.amazon.com/about-aws/whats-new/2021/11/aws-control-tower-controls-data-residency-requirements/"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_SEC6_1 && HCL_SEC6_2",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "(!HCL_SEC6_1) || (!HCL_SEC6_2)",
-                            "risk": "HIGH_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_SEC7",
-                    "title": "Data protection",
-                    "description": "How are you protecting health data at rest and in transit?",
-                    "choices": [
-                        {
-                            "id": "HCL_SEC7_1",
-                            "title": "Encrypt sensitive health data at rest and in transit at all times",
-                            "helpfulResource": {
-                                "displayText": "Protect all sensitive data stored and transmitted within a cloud environment with AWS encryption services. The AWS Business Associate Addendum (BAA), applicable to customers who align with the Health Insurance Portability and Accountability Act (HIPAA), requires the encryption of protected health information (PHI) as defined by HIPAA at rest and in transit. Encryption at rest and in transit may be required by other applicable frameworks. ",
-                                "url": "https://docs.aws.amazon.com/whitepapers/latest/logical-separation/encrypting-data-at-rest-and--in-transit.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": " As documented in the data encryption section of the Introduction to AWS Security whitepaper and the Encrypting Data-at-Rest and -in-Transit section of the Logical Separation on AWS whitepaper, AWS allows you to add a layer of security to your data at rest in the cloud, providing scalable and efficient encryption features. These include:\n\n    Data at rest encryption capabilities available in most AWS services, such as Amazon Elastic Block Store (Amazon EBS), Amazon S3, Amazon RDS, Amazon Redshift, Amazon ElastiCache, AWS Lambda, and Amazon SageMaker\n\n    Flexible key management options, including AWS Key Management Service (AWS KMS), that allow you to choose whether to have AWS manage the encryption keys or enable you to keep complete control over your own keys\n\n    Dedicated, hardware-based cryptographic key storage using AWS CloudHSM, allowing you to help satisfy your compliance requirements\n\n    Encrypted message queues for the transmission of sensitive data using server-side encryption (SSE) for Amazon Simple Queue Service (Amazon SQS)\n\nIn addition, AWS provides APIs for you to integrate encryption and data protection with any of the services you develop or deploy in an AWS environment. ",
-                                "url": "https://docs.aws.amazon.com/whitepapers/latest/logical-separation/encrypting-data-at-rest-and--in-transit.html"
-                            }
-                        },
-                        {
-                            "id": "HCL_SEC7_2",
-                            "title": "Implement encryption controls as part of the infrastructure architecture",
-                            "helpfulResource": {
-                                "displayText": "Use infrastructure as code to declare encryption as a configuration when creating an environment template. Use alerts and automated remediation, where possible, with AWS Config that can detect when a resource is not configured to use encryption. Where automated remediation is not available, verify that alerts are generated and sent to the appropriate parties. ",
-                                "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/data-protection.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Amazon EBS, block-storage for use with Amazon EC2 Auto Scaling, uses AWS KMS keys to encrypt storage volumes and snapshots.  Consider configuring your AWS accounts for Amazon EBS encryption by default, enforcing that any created Amazon EBS volumes are encrypted automatically.\n\nAmazon RDS uses configuration policies that can enforce encrypted connections to a hosted database. The Amazon RDS documentation contains information on using SSL/TLS to encrypt a connection to the database.\n\nAmazon S3 buckets that may contain health data should be configured to require secure connections with the use of a bucket policy, and require encryption of data at rest.  Encryption in transit between systems must be identified and enforced where possible. \n\nWhen hosting applications on Amazon EC2 instances, use open standard transport encryption mechanisms such as Transport Layer Security (TLS) to encrypt data during transit between instances and endpoints. Certain Amazon EC2 instance types can offload encrypting traffic between instances to the underlying Nitro System hardware, using Authenticated Encryption with Associated Data (AEAD) algorithms with 256-bit encryption.\n\nMicroservice architectures should also consider controls to enforce encryption of data between services when hosting and processing health data. AWS App Mesh, a service mesh that makes it easy to monitor and control service, features Transport Layer Security (TLS) encrypts communication between the Envoy proxies deployed on compute resources that are represented in App Mesh. When the proxy is deployed with an application, your application code is not responsible for negotiating a TLS session. The proxy negotiates TLS on your application's behalf.",
-                                "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/data-protection.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_SEC7_1 && HCL_SEC7_2",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "(!HCL_SEC7_1) || (!HCL_SEC7_2)",
-                            "risk": "HIGH_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_SEC8",
-                    "title": "Data protection",
-                    "description": "How do you isolate sensitive data?",
-                    "choices": [
-                        {
-                            "id": "HCL_SEC8_1",
-                            "title": "Isolate health data from non-health data",
-                            "helpfulResource": {
-                                "displayText": "Organizations working with health data should take steps to isolate and segment health data from non-health data. In conjunction with the recommendations around data discovery and classification, it is important to separate health data so the organization can implement the necessary technical and administrative controls. ",
-                                "url": "https://docs.aws.amazon.com/whitepapers/latest/organizing-your-aws-environment/organizing-your-aws-environment.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Isolation can be accomplished through a variety of methods depending on the cloud environment. AWS recommends beginning with using multiple AWS accounts and designating specific accounts as containing health data. AWS accounts provide a level of segmentation that allows strict controls to be put in place for workloads that host and process health data. AWS Organizations, an account management service that enables you to consolidate multiple AWS accounts into an organization that you create and centrally manage, provides management capabilities that allow you to group like accounts into organizational units (OUs) and apply policies at the OU level. This verifies that all accounts within that OU are using a standardized set of policies and controls, which can help organizations align to their specific compliance needs.\n\nFurthermore, as outlined in the Organizing Your AWS Environment Using Multiple Accounts whitepaper, when you limit sensitive data stores to an account that is built to manage it, you can more easily constrain the number of people and processes that can access and manage the data. This approach simplifies the process of achieving least privilege access. Limiting access at the coarse-grained level of an account helps contain exposure to highly sensitive data. ",
-                                "url": "https://docs.aws.amazon.com/whitepapers/latest/organizing-your-aws-environment/organizing-your-aws-environment.html"
-                            }
-                        },
-                        {
-                            "id": "HCL_SEC8_2",
-                            "title": "Limit access to health data",
-                            "helpfulResource": {
-                                "displayText": "It is important to limit access to health data within an account to prevent unintended disclosure of sensitive data.",
-                                "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Use resource isolation, such as designated Amazon S3 buckets, to separate health data from non-health data. Resource isolation can also be used to isolate tenants and tenant-specific data. Resource isolation and tenant isolation reinforce the benefits to account isolation, limiting access to sensitive data to only the people and systems that require it, without unnecessarily blocking access to less sensitive data. Refer to the Security pillar section of the Well-Architected Framework SaaS Lens for additional recommendations on tenant isolation.\n\nTagging allows limiting access to specific resources through the use of conditional statements in IAM policies. By adding a specific resource tag to an IAM policy, such as data type: health, organizations can allow or deny access to resources with that tag. This approach adds an additional layer of authorization to resources that host and process health data. ",
-                                "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_SEC8_1 && HCL_SEC8_2",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "(!HCL_SEC8_1) || (!HCL_SEC8_2)",
-                            "risk": "HIGH_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_SEC9",
-                    "title": "Incident Response",
-                    "description": "What is your disaster recovery for critical systems?",
-                    "choices": [
-                        {
-                            "id": "HCL_SEC9_1",
-                            "title": "Mitigate and respond to potential incidents by creating policies, procedures, and playbooks",
-                            "helpfulResource": {
-                                "displayText": "Healthcare, and heath data, are valuable targets for malicious actors. Create policies, procedures, and playbooks designed to respond to and mitigate the potential impact of a security event or natural disaster. This includes exercises that practice the response to a simulated incident using the defined policies, procedures, and playbooks to prepare your organization. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/incident-response.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "As malicious actors continue to target healthcare and health data owners with attacks such as ransomware, implement a data availability strategy to help reduce the potential impact. This can include backups that are stored in a separate AWS account with authorization controls in place to prevent modifying the backup (such as setting the backup as read only) or a pilot light disaster recovery environment. Create specific policies, procedures, and playbooks for ransomware to prepare your organization. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/incident-response.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_SEC9_1",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "(!HCL_SEC9_1)",
-                            "risk": "HIGH_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                }
-            ]
+          "id": "OPS2",
+          "title": "What policies and procedures has your organization adopted for cloud governance?",
+          "description": "Cloud governance is a set of policies and procedures that outline, or govern, how an organization manages their cloud workloads.",
+          "helpfulResource": {
+            "displayText": "Cloud governance is a set of policies and procedures that outline, or govern, how an organization manages their cloud workloads.  A mature governance program requires understanding the compliance objectives and requirements and establishing a control environment that meets those objectives and requirements.",
+            "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
+          },
+          "choices": [
+            {
+              "id": "OPS2_1",
+              "title": "Create policies and procedures to govern cloud workloads",
+              "helpfulResource": {
+                "displayText": "A mature governance program requires understanding the compliance objectives and requirements and establishing a control environment that meets those objectives and requirements.  Organizations that host and process healthcare data can be required to meet specific standards and regulations, such as HIPAA or General Data Protection Regulation (GDPR). A mature governance program can help verify that the necessary controls are implemented.",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
+              },
+              "improvementPlan": {
+                "displayText": "Amazon Web Services: Risk and Compliance whitepaper",
+                "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-risk-and-compliance/welcome.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "OPS2_1",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "(!OPS2_1)",
+              "risk": "HIGH_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
         },
         {
-            "id": "HCL_REL1",
-            "name": "Reliability",
-            "questions": [
-                {
-                    "id": "HCL_REL1",
-                    "title": "Foundations",
-                    "description": "How does your system adapt to changes in demand?",
-                    "helpfulResource": {
-                        "displayText": "To achieve reliability, a system must have a well-planned foundation in place, with mechanisms for handling changes in demand or requirements. The system should be designed to detect failure and automatically repair itself. ",
-                        "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/foundations.html"
-                    },
-                    "choices": [
-                        {
-                            "id": "HCL_REL1_1",
-                            "title": "Architect systems for elasticity",
-                            "helpfulResource": {
-                                "displayText": "Healthcare applications often have time-based peaks in demand. For example, clinical systems may need to respond to periods of high demand using either time-based or usage-based metrics to define automatic scaling rules. An example of periods of high demand could be daytime business hours or a known event such as open-enrollment for an insurance provider.  Embracing elasticity enables healthcare organizations to right-size performance during all hours of the day while minimizing excess cost. General distributed systems recommendations apply.",
-                                "url": "https://docs.aws.amazon.com/autoscaling/application/userguide/integrated-services-list.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Where possible, implement architectures that automatically adapt to changes in demand and leverage AWS services that allow you to scale with demand.\n\nAWS Auto Scaling simplifies how you adapt to demand. For example, software as a service (SaaS) applications may monitor demand with custom CloudWatch metrics that capture the number of concurrent active users, or open sessions supported by the application.  Healthcare solutions implemented as distributed systems may use multiple services that can scale elastically. You can leverage scaling plans to simplify configuration of scaling rules, and follow auto scaling best practices to maximize reliability.\nOther managed services, such as Amazon Kinesis Data Firehose, allow you to operate at scale without worrying about capacity or managing infrastructure.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-2.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_REL1_1",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "(!HCL_REL1_1)",
-                            "risk": "HIGH_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_REL2",
-                    "title": "Workload architecture",
-                    "description": "How do you ensure acceptable network availability for your healthcare workloads?",
-                    "helpfulResource": {
-                        "displayText": "To achieve reliability, a system must have a well-planned foundation in place, with mechanisms for handling changes in demand or requirements. The system should be designed to detect failure and automatically repair itself. ",
-                        "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/workload-architecture.html"
-                    },
-                    "choices": [
-                        {
-                            "id": "HCL_REL2_1",
-                            "title": "Architect network connections for redundancy",
-                            "helpfulResource": {
-                                "displayText": "Healthcare applications require secure connectivity between the cloud and on-premises resources and users.  Certain healthcare applications are more latency-sensitive than others.  Consider business continuity and disaster recovery network requirements.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/workload-architecture.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Following the Well-Architected Reliability Pillar, redundant, encrypted connections are critical to verify service continuity and, more importantly, consistent patient care.\n\nImplement Failover to public internet connection with VPN routing. Connect to Amazon VPCs using VPNs or through AWS Transit Gateway.  If using AWS Direct Connect, implement redundant Direct Connect connections: Use the AWS Direct Connect resiliency toolkit to enable resilient applications and achieve an SLA of 99.99%.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/plan-your-network-topology.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_REL2_1",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "(!HCL_REL2_1)",
-                            "risk": "HIGH_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                }
-            ]
+          "id": "OPS3",
+          "title": "How do you map security controls to compliance requirements?",
+          "description": "Organizations that host and process health data must verify that they are adhering to all applicable regulatory frameworks and standards.",
+          "helpfulResource": {
+            "displayText": "Organizations that host and process health data must verify that they are adhering to all applicable regulatory frameworks and standards. As healthcare organizations evolve and grow, they may either want, or be required, to adhere to multiple regulations or certifications. For example, a European organization may be required to meet GDPR and additional country-specific regulations in each country it operates in.",
+            "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
+          },
+          "choices": [
+            {
+              "id": "OPS3_1",
+              "title": "Determine regulatory frameworks and security controls that are applicable to your business and your cloud workload",
+              "helpfulResource": {
+                "displayText": "As healthcare organizations evolve and grow, they may either want, or be required, to adhere to multiple regulations or certifications. For example, a European organization may be required to meet GDPR and additional country-specific regulations in each country it operates in. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
+              },
+              "improvementPlan": {
+                "displayText": "Resources to learn more about best practices related to operational excellence",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
+              }
+            },
+            {
+              "id": "OPS3_2",
+              "title": "Map applicable frameworks and controls to AWS controls to align with regulatory frameworks",
+              "helpfulResource": {
+                "displayText": "There are two common approaches to addressing multiple compliance regimes. First, organizations may choose to address each set of requirements from the beginning and develop mappings unique to each. Alternatively, organizations can choose to map to a common security framework, and leverage published controls mappings from that framework to many others in a hub-and-spoke model. AWS recommends the latter approach where possible to avoid duplicating effort. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
+              },
+              "improvementPlan": {
+                "displayText": "Resources to learn more about best practices related to operational excellence",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "OPS3_1 && OPS3_2",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "(!OPS3_1) || (!OPS3_2)",
+              "risk": "HIGH_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
         },
         {
-            "id": "HCL_PERF1",
-            "name": "Performance Efficiency",
-            "questions": [
-                {
-                    "id": "HCL_PERF_1",
-                    "title": "Performance architecture",
-                    "description": "How do you encrypt data while ensuring performance?",
-                    "helpfulResource": {
-                        "displayText": "Often, multiple approaches are required to get optimal performance across a workload. Well-architected systems use multiple solutions and enable different features to improve performance.",
-                        "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/performance-architecture.html"
-                    },
-                    "choices": [
-                        {
-                            "id": "HCL_PERF_1_1",
-                            "title": "Offload encryption to hardware",
-                            "helpfulResource": {
-                                "displayText": "Certain encryption approaches, such as VPN tunnels or IPsec meshes, can impact performance when implemented at scale. Where possible, offload encryption to hardware to maintain security while improving performance.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-3.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "The AWS Nitro System provides hardware components that allow for easy offloading of encryption services to the hardware. For example, some instance types use the hardware capabilities of the Nitro System hardware to encrypt in-transit traffic between instances with no impact to network performance. This allows healthcare organizations to enable encryption in-transit for sensitive healthcare data. Use instance types that support the Nitro System where possible.",
-                                "url": "http://aws.amazon.com/ec2/nitro/"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_PERF_1_1",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "(!HCL_PERF_1_1)",
-                            "risk": "HIGH_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_PERF_2",
-                    "title": "Compute selection",
-                    "description": "How do you select your compute solution ?",
-                    "helpfulResource": {
-                        "displayText": "The optimal compute choice for a particular workload can vary based on application design, usage patterns, and configuration settings. Architectures may use different compute choices for various components and enable different features to improve performance. Selecting the wrong compute choice for an architecture can lead to lower performance efficiency.",
-                        "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/compute-selection.html"
-                    },
-                    "choices": [
-                        {
-                            "id": "HCL_PERF_2_1",
-                            "title": "Select compute services that meet regulatory and performance requirements",
-                            "helpfulResource": {
-                                "displayText": "Healthcare requirements for compute are generally consistent with other industries. Healthcare applications can take advantage of virtual machines, containers, or serverless technologies.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-3.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Healthcare applications should enable encryption in-transit at one of the OSI layers. Some legacy communication protocols, such as Minimal Lower Layer Protocol (MLLP) for healthcare interoperability, may not natively support encryption in-transit. A common industry solution has been to overlay a VPN or create an IPsec mesh on top of virtual machines in a VPC to encrypt sensitive data in transit; however, such approaches can create performance penalties. Instead, where possible, use Amazon EC2 instances with encryption in-transit handled by the underlying Amazon EC2 Nitro System to reduce any performance penalties associated with inter-Amazon EC2 communication. ",
-                                "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/data-protection.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_PERF_2_1",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "(!HCL_PERF_2_1)",
-                            "risk": "HIGH_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_PERF_3",
-                    "title": "Storage architecture",
-                    "description": "How do you define and test storage performance requirements?",
-                    "helpfulResource": {
-                        "displayText": "Cloud storage is a critical component of cloud computing, holding the information used by your workload. Cloud storage is typically more reliable, scalable, and secure than traditional on-premises storage systems. Select from object, block, and file storage services as well as cloud data migration options for your workload.",
-                        "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/perf-storage.html"
-                    },
-                    "choices": [
-                        {
-                            "id": "HCL_PERF_3_1",
-                            "title": "Select the appropriate storage solution based on the use case",
-                            "helpfulResource": {
-                                "displayText": "The optimal storage solution for a system varies based on the kind of access method (block, file, or object), patterns of access (random or sequential), required throughput, frequency of access (online, offline, archival), frequency of update (WORM, dynamic), and availability and durability constraints. Well-architected systems use multiple storage solutions and enable different features to improve performance and use resources efficiently.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-3.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "AWS offers storage with extreme durability and performance. For example, Amazon S3 provides 99.999999999% (11 nines) of data durability of objects over a given year. Amazon EBS io2 block storage offers not only 99.999% durability, but up to 500 IOPS per GiB, enabling high performance and durability for healthcare workloads that require higher performance, such as transactional databases.",
-                                "url": "https://aws.amazon.com/products/storage/"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_PERF_3_1",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "(!HCL_PERF_3_1)",
-                            "risk": "HIGH_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                }
-            ]
+          "id": "OPS4",
+          "title": "How do you educate employees on access to sensitive data? ",
+          "description": "Organizations that host or process PHI should ensure that employees who have access to healthcare data are trained on the rules and regulations that govern the organization.",
+          "helpfulResource": {
+            "displayText": "Organizations that host or process PHI should ensure that employees who have access to healthcare data, either intentionally or accidentally as part of their job function, are trained on the rules and regulations that govern the organization. Employees should have knowledge on what to do when viewing sensitive data",
+            "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
+          },
+          "choices": [
+            {
+              "id": "OPS4_1",
+              "title": "Ensure employees who may have access to sensitive healthcare data are trained on the rules and regulations.",
+              "helpfulResource": {
+                "displayText": "Employees should have knowledge on what to do when viewing sensitive data. They should know how and where to host or process that data, and how to protect it. Train employees on any other regulation-based requirements, such as breach disclosure. Document all of this in your risk management program. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
+              },
+              "improvementPlan": {
+                "displayText": "Resources to learn more about best practices related to operational excellence",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
+              }
+            },
+            {
+              "id": "OPS4_2",
+              "title": "Create and document a policy and procedure aligned to each control and safeguard",
+              "helpfulResource": {
+                "displayText": "Organizations that are hosting and processing sensitive healthcare data should have a documented policy that aligns with each control or safeguard in place to secure the data. In addition, each policy should have an associated procedure document that outlines how the policy will be implemented. These policy and procedure documents will help educate employees on the safeguards used, and can help demonstrate your compliance posture to your stakeholders. These documents help create a stronger culture of compliance for your organization. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
+              },
+              "improvementPlan": {
+                "displayText": "Resources to learn more about best practices related to operational excellence",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "OPS4_1 && OPS4_2",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "(!OPS4_1)",
+              "risk": "HIGH_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
         },
         {
-            "id": "HCL_COST1",
-            "name": "Cost Optimization",
-            "questions": [
-                {
-                    "id": "HCL_COST1",
-                    "title": "Data Retention",
-                    "description": "How do you define and enforce data retention policies?",
-                    "helpfulResource": {
-                        "displayText": "Organizations typically operate multiple workloads run by multiple teams. These teams can be in different organization units, each with its own\nrevenue stream. The capability to attribute resource costs to the workloads, individual organization, or product owners drives efficient usage behavior and helps reduce waste.",
-                        "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/expenditure-and-usage-awareness.html"
-                    },
-                    "choices": [
-                        {
-                            "id": "HCL_COST1_1",
-                            "title": "Determine applicable regulatory frameworks and controls as it pertains to data retention",
-                            "helpfulResource": {
-                                "displayText": "Organizations may be subject to regulatory and company requirements dictating data retention requirements. Developing strategies for data retention is imperative to maintain compliance while minimizing cost. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/data-retention.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Establish a data retention policy identifying the types and duration that data should be retained in accordance with internal and external requirements. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-4.html"
-                            }
-                        },
-                        {
-                            "id": "HCL_COST1_2",
-                            "title": "Implement data lifecycle policies",
-                            "helpfulResource": {
-                                "displayText": "Implement lifecycle policies that transition infrequently-accessed data to lower-cost storage tiers.  For example, use Amazon S3 Lifecycle configurations to archive infrequently accessed data after some period of time, automatically reducing storage costs. Alternatively, use Amazon S3 Intelligent-Tiering to shift the archival policies to focus on time of last access instead of time the object has been in Amazon S3. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/data-retention.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "When designing your policies for each type of data, be sure to factor the size of the data, the frequency of access, and expectations for retrieval time; these are the three predominant cost-drivers. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-4.html"
-                            }
-                        },
-                        {
-                            "id": "HCL_COST1_3",
-                            "title": "Centralize automated policy enforcement",
-                            "helpfulResource": {
-                                "displayText": "Adopting infrastructure as code, enables you to define and test your data retention policies before they make it into production.   For example, if regulatory requirements specify that you must retain certain medical images for 10 years, you can verify that no Amazon S3 lifecycle policy expires an object before that time. Additionally, consider AWS Backup for centralized backup management, which enables you to back up application data in a consistent and compliant manner.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/data-retention.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Create infrastructure as code to define and test your data retention policies. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-4.html"
-                            }
-                        },
-                        {
-                            "id": "HCL_COST1_4",
-                            "title": "Validate lifecycle policies are enforced by enabling monitoring and alerts.",
-                            "helpfulResource": {
-                                "displayText": "Monitor changes to your environment as described in the operational excellence and security tiers.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/data-retention.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Set up alerts for when an action alters a data retention policy to make sure it was authorized and operating correctly.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-4.html"
-                            }
-                        },
-                        {
-                            "id": "HCL_COST1_5",
-                            "title": "Validate lifecycle policies are enforced by enabling monitoring and alerts.",
-                            "helpfulResource": {
-                                "displayText": "Monitor changes to your environment as described in the operational excellence and security pillars of the AWS Well-Architected Framework.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/data-retention.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "If using AWS Backup, use AWS Backup Audit Manager to automatically detect when your AWS Backup policies violate your data retention requirements. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-4.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_COST1_1 && HCL_COST1_2 && HCL_COST1_3 && HCL_COST1_4 && HCL_COST1_5",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "(!HCL_COST1_1) || (!HCL_COST1_3)",
-                            "risk": "HIGH_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                }
-            ]
+          "id": "OPS5",
+          "title": "How do you demonstrate continuous compliance?",
+          "description": "Healthcare organizations must be able to demonstrate their compliance posture.",
+          "helpfulResource": {
+            "displayText": "Managing compliance manually can be time-consuming, complex, and confusing. Healthcare organizations must be able to demonstrate their compliance posture. Evidence that includes the safeguards used to protect sensitive healthcare data, as well as the documented policies and procedures, can all be used to demonstrate compliance. ",
+            "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/prepare.html"
+          },
+          "choices": [
+            {
+              "id": "OPS5_1",
+              "title": "Partition workloads involving sensitive data into separate environments.",
+              "helpfulResource": {
+                "displayText": "Minimize access to sensitive data by isolating workloads to separate environments requiring additional controls for access. Segmenting can be done by AWS accounts, VPCs, or Amazon Simple Storage Service buckets. Minimize using sensitive data in non-production environments. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/operate.html"
+              },
+              "improvementPlan": {
+                "displayText": "Resources to learn more about best practices related to operational excellence",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
+              }
+            },
+            {
+              "id": "OPS5_2",
+              "title": "Architect and build with the ability to generate evidence that demonstrate continuous compliance",
+              "helpfulResource": {
+                "displayText": "Healthcare organizations must be able to demonstrate their compliance posture.  Evidence that includes the safeguards used to protect sensitive healthcare data, as well as the documented policies and procedures, can all be used to demonstrate compliance. The cloud services used to architect a compliant foundation in the cloud, can also be used to gather the necessary evidence to demonstrate compliance posture. For example, using infrastructure as code, coupled with a software development lifecycle, can demonstrate a mature change management process, which is an important compliance control. Being able to demonstrate the full scope of a compliance posture is critical for all stakeholders, whether that is an organizations leadership, shareholders, customers, and patients.",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/operate.html"
+              },
+              "improvementPlan": {
+                "displayText": "Resources to learn more about best practices related to operational excellence",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
+              }
+            },
+            {
+              "id": "OPS5_3",
+              "title": "Identify resources in the cloud environment",
+              "helpfulResource": {
+                "displayText": "An accurate representation of your cloud environments is necessary to demonstrate continuous compliance. Understand what AWS resources exist and how they interact with each other. AWS Config will help you identify these resources and how they are configured. Use distributed tracing solutions, such as AWS X-Ray, to understand how components of your system interact, and to map network accessibility between different resources in your environment.",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/operate.html"
+              },
+              "improvementPlan": {
+                "displayText": "Resources to learn more about best practices related to operational excellence",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
+              }
+            },
+            {
+              "id": "OPS5_4",
+              "title": "Restrict resources and applications to pre-defined configurations",
+              "helpfulResource": {
+                "displayText": "Coupling AWS Config with infrastructure as code will allow you to test application configurations before they are deployed in your environment. Apply governance to your AWS deployments using infrastructure as code tools like AWS CloudFormation, AWS Cloud Development Kit (AWS CDK), Terraform, and Service Catalog. Verify that all configurations are secure-by-default with best practices around encryption, logging, and least privilege.",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/operate.html"
+              },
+              "improvementPlan": {
+                "displayText": "Resources to learn more about best practices related to operational excellence",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
+              }
+            },
+            {
+              "id": "OPS5_5",
+              "title": "Implement compliance-as-code for configuration",
+              "helpfulResource": {
+                "displayText": "For each configuration you specify, test the controls you put in place. Use AWS Config as the central location to evaluate configuration changes. Where possible, use AWS Config managed rules, but also implement custom evaluations with AWS Lambda, fully capturing environment configuration. Configuration triggers will also shorten the time to identify AWS resources that are out of compliance compared to periodic triggers. This helps you demonstrate your compliance posture by automatically building and maintaining a list of resources within your AWS environment.",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/operate.html"
+              },
+              "improvementPlan": {
+                "displayText": "AWS Config Conformance Pack Sample Templates",
+                "url": "https://docs.aws.amazon.com/config/latest/developerguide/conformancepack-sample-templates.html"
+              }
+            },
+            {
+              "id": "OPS5_6",
+              "title": "Centralize security and compliance findings",
+              "helpfulResource": {
+                "displayText": "Many customers will use multiple AWS accounts (such as development, test, and prod, or department-specific accounts). Configuration management, while important, is not the only set of technical controls you may require. For example, you may combine your configuration posture with additional findings, from third-party solutions or AWS security services like Amazon GuardDuty. Technical controls and findings should be grouped together as evidence using a solution such as AWS Security Hub. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/operate.html"
+              },
+              "improvementPlan": {
+                "displayText": "Resources to learn more about best practices related to operational excellence",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
+              }
+            },
+            {
+              "id": "OPS5_7",
+              "title": "Map technical controls to compliance requirements using automation.",
+              "helpfulResource": {
+                "displayText": "Simplify maintaining a complete view of your compliance posture by automatically mapping controls and findings to your internal policies. For example, if you have a compliance policy around encryption at-rest, you may have individual controls on the configuration of each AWS resource to verify encryption is enabled.",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/operate.html"
+              },
+              "improvementPlan": {
+                "displayText": "Resources to learn more about best practices related to operational excellence",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
+              }
+            },
+            {
+              "id": "OPS5_8",
+              "title": "Use up-to-date artifacts.",
+              "helpfulResource": {
+                "displayText": "The creation of artifacts that document the compliance posture of a cloud environment should be automated. Use services such as AWS Config, AWS Audit Manager, and AWS Security Hub to automatically collect and report the compliance state of a cloud environment.",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/operate.html"
+              },
+              "improvementPlan": {
+                "displayText": "Resources to learn more about best practices related to operational excellence",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "OPS5_1 && OPS5_2 && OPS5_3 && OPS5_4 && OPS5_5 && OPS5_6 && OPS5_7 && OPS5_8",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "(!OPS5_1) || (!OPS5_3) || (!OPS5_4) || (!OPS5_8)",
+              "risk": "HIGH_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
         },
         {
-            "id": "HCL_SUS1",
-            "name": "Sustainability",
-            "questions": [
-                {
-                    "id": "HCL_SUS1",
-                    "title": "Region Selection",
-                    "description": "How do you identify targets for sustainability improvement?",
-                    "helpfulResource": {
-                        "displayText": "Prioritize targets for improvement by reviewing your workloads against the sustainability principles",
-                        "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/best-practices-for-sustainability-in-the-cloud.html"
-                    },
-                    "choices": [
-                        {
-                            "id": "HCL_SUS1_1",
-                            "title": "Identify on-premises workloads that can be moved to the cloud",
-                            "helpfulResource": {
-                                "displayText": "Migrating workloads from on-premises data centers to the cloud can reduce the workload s carbon footprint by 88%.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/best-practices-for-sustainability-in-the-cloud.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "The Sustainability pillar of the AWS Well-Architected Framework contains a number of best practices for sustainability in the cloud. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sustainability-pillar.html"
-                            }
-                        },
-                        {
-                            "id": "HCL_SUS1_2",
-                            "title": "Regular review of cloud architecture for optimization opportunities can reduce carbon footprints.",
-                            "helpfulResource": {
-                                "displayText": "Continuous optimization of cloud architectures can result in a reduced carbon footprint.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/best-practices-for-sustainability-in-the-cloud.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "The Sustainability pillar of the AWS Well-Architected Framework contains a number of best practices for sustainability in the cloud. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sustainability-pillar.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_SUS1_1 && HCL_SUS1_2",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_SUS2",
-                    "title": "User behavior patterns",
-                    "description": "How do you match workload infrastructure to user behavior patterns?",
-                    "choices": [
-                        {
-                            "id": "HCL_SUS2_1",
-                            "title": "Scale infrastructure to continually match user demand and performance requirements",
-                            "helpfulResource": {
-                                "displayText": "Many healthcare workloads are life-critical, and have steady demand 24 x 7. However, other workloads (such as those supporting ambulatory care delivery or revenue cycle workflows) exhibit cyclical utilization patterns with peak demand during business hours. Minimize the amount of hardware used by scaling workloads down during periods of low demand. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/use-the-minimum-amount-of-hardware-to-meet-your-needs.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Minimize the amount of hardware used by scaling workloads down during periods of low demand.  Consider cloud-native ways to meet business requirements for legacy applications",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/use-the-minimum-amount-of-hardware-to-meet-your-needs.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_SUS2_1",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_SUS3",
-                    "title": "Software and architecture patterns",
-                    "description": "Does your organization monitor workload activity and remove or refactor components that are no longer necessary?",
-                    "choices": [
-                        {
-                            "id": "HCL_SUS3_1",
-                            "title": "Analyze demand on workloads to identify components that can be removed or refactored.",
-                            "helpfulResource": {
-                                "displayText": "Analyze demand on workloads to identify components that can be removed or refactored. Then, engage component owners and stakeholders to redesign clinical workflows, and decrease workload infrastructure",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/remove-or-refactor-workload-components-with-low-or-no-use.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Identifying and removing or refactoring components with little or no use can simplify workflows, decrease cost, and improve sustainability. Cloud archives can minimize the cost of retaining data from retired components. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/remove-or-refactor-workload-components-with-low-or-no-use.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_SUS3_1",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_SUS4",
-                    "title": "Software and architecture patterns",
-                    "description": "How do you optimize the impact of and applications and the equipment that run them?",
-                    "choices": [
-                        {
-                            "id": "HCL_SUS4_1",
-                            "title": "Evaluate the overall impact of applications, devices, and equipment",
-                            "helpfulResource": {
-                                "displayText": "As new features are released for a healthcare application, build those features as backward compatible, minimizing the need for new hardware.  Additionally, evaluate the potential impact of new or upgraded hardware requirements to minimize the overall impact when architecting new workloads or features. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sustainability-pillar.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Optimize impact on customer devices and equipment",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/optimize-impact-on-customer-devices-and-equipment.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_SUS4_1",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_SUS5",
-                    "title": "Measure Results",
-                    "description": "How does your organization measure the effectiveness of sustainability efforts?",
-                    "choices": [
-                        {
-                            "id": "HCL_SUS5_1",
-                            "title": "Quantify and report results to drive continuous improvement processes",
-                            "helpfulResource": {
-                                "displayText": "The healthcare vertical extensively uses metrics and measures to quantify care quality, effectiveness, and patient experience. Adding metrics to quantify sustainability improvement can better align business interests with sustainability goals. Further, analysis of such reporting can help identify repeatable processes for achieving sustainability improvements. ",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/measure-results.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Add metrics to quantify sustainability improvement can better align business interests with sustainability goals.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-5.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_SUS5_1",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                },
-                {
-                    "id": "HCL_SUS6",
-                    "title": "Data Patterns",
-                    "description": "How does your organization remove unneeded or redundant health data?",
-                    "choices": [
-                        {
-                            "id": "HCL_SUS6_1",
-                            "title": "Automate data retention processes that retain the minimum amount of health data required to meet regulatory and business requir",
-                            "helpfulResource": {
-                                "displayText": "Regulatory requirements may impose data retention periods on healthcare providers and ISVs.  However, it is common for health data to be retained in perpetuity, well beyond its useful life.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/remove-unneeded-or-redundant-data.html"
-                            },
-                            "improvementPlan": {
-                                "displayText": "Begin by reviewing and classifying data in line with your business and regulatory requirements, such as how long health data records must be retained.  Review data assets with consideration of regulatory compliance, care delivery needs, and secondary use goals.  Optimize storage costs and environmental impact by taking advantage of storage classes within cloud services and aligning with access patters. Remove unneeded or redundant data.",
-                                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/remove-unneeded-or-redundant-data.html"
-                            }
-                        }
-                    ],
-                    "riskRules": [
-                        {
-                            "condition": "HCL_SUS6_1",
-                            "risk": "NO_RISK"
-                        },
-                        {
-                            "condition": "default",
-                            "risk": "MEDIUM_RISK"
-                        }
-                    ]
-                }
-            ]
+          "id": "OPS6",
+          "title": "How do you automate remediation of compliance violations?",
+          "description": "Automate remediation of configurations that are out of compliance with your technical controls for rapid, consistent application of your policies.",
+          "helpfulResource": {
+            "displayText": "There are several key concepts to consider when creating an automated remediation solution. While your organization is responsible for compliance for your environment, per the shared responsibility model, the following approach will make it easier to demonstrate compliance on AWS. In general, use managed services either from AWS or a third-party solution, such as one available in AWS Marketplace, to simplify your approach.  Similar to the recommendations for demonstrating continuous compliance, define compliance requirements and create associated policies and procedures for remediation before creating the remediation solution.",
+            "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/operate.html"
+          },
+          "choices": [
+            {
+              "id": "OPS6_1",
+              "title": "Automate remediation actions for non-compliant resources",
+              "helpfulResource": {
+                "displayText": "Automate remediation of configurations that are out of compliance with your technical controls for rapid, consistent application of your policies. Event-driven architectures improve remediation times. Not everything can be predicted ahead of time. Certain remediations may be manual at first, but investigated when they occur and automated when possible in future occurrences. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/operate.html"
+              },
+              "improvementPlan": {
+                "displayText": "Resources to learn more about best practices related to operational excellence",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "OPS6_1",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
         }
-    ]
+      ]
+    },
+    {
+      "id": "SEC1",
+      "name": "Security",
+      "questions": [
+        {
+          "id": "SEC1",
+          "title": "How do you identify where health data is in your environment?",
+          "description": "Organizations should understand what types of data are being hosted and processed, and where that data resides.",
+          "choices": [
+            {
+              "id": "SEC1_1",
+              "title": "Determine applicable regulatory frameworks and controls as it pertains to data classification",
+              "helpfulResource": {
+                "displayText": "It is critical that organizations understand what types of data are being hosted and processed, and where that data resides. This understanding is a basis for ensuring that the right controls are in place for aligning with relevant regulatory frameworks and standards. Data classification also aids in traceability and access monitoring of sensitive data."
+              },
+              "improvementPlan": {
+                "displayText": "AWS Data Classification whitepaper",
+                "url": "https://docs.aws.amazon.com/whitepapers/latest/data-classification/welcome.html"
+              }
+            },
+            {
+              "id": "SEC1_2",
+              "title": "Create and document a data classification strategy",
+              "helpfulResource": {
+                "displayText": "Based on the business requirements, and any applicable regulatory frameworks, implement a data classification policy. This policy should extend beyond simply marking health data, but should include other sensitive or confidential data, as well as public data. The Data Classification: Secure Cloud Adoption whitepaper provides examples of how to categorize data, and how to implement a data classification strategy that implements the appropriate controls based on the data category.  Make sure that health data is classified in accordance with the proper regulatory frameworks that your business aligns to. ",
+                "url": "https://docs.aws.amazon.com/whitepapers/latest/data-classification/welcome.html"
+              },
+              "improvementPlan": {
+                "displayText": "AWS Data Classification whitepaper",
+                "url": "https://docs.aws.amazon.com/whitepapers/latest/data-classification/welcome.html"
+              }
+            },
+            {
+              "id": "SEC1_3",
+              "title": "Select the appropriate cloud deployment model according to your needs, the type of data you handle, and the assessed risk",
+              "helpfulResource": {
+                "displayText": "As outlined in the Data Classification: Secure Cloud Adoption whitepaper, select the appropriate cloud deployment model according to your specific needs, the type of data you handle, and the assessed risk. Depending on the classification of the data, apply the relevant security controls (such as encryption) within your cloud environment. AWS also recommends that health data be classified and labeled as such, simplifying audits and ensuring that the proper technical controls can be implemented.  If your environment uses multiple AWS accounts, designate specific accounts to host and process health data to simplify managing where health data is located. For example, if your account structure mirrors your software development lifecycle with accounts designated for development, testing, staging, and production, the production and staging accounts may be designated as “health data” accounts and are therefore documented as containing health data. Then, implement procedures and controls in the development and testing accounts to prevent health data from being stored there. ",
+                "url": "https://docs.aws.amazon.com/whitepapers/latest/data-classification/welcome.html"
+              },
+              "improvementPlan": {
+                "displayText": "AWS Data Classification whitepaper",
+                "url": "https://docs.aws.amazon.com/whitepapers/latest/data-classification/welcome.html"
+              }
+            },
+            {
+              "id": "SEC1_4",
+              "title": "Implement automated data classification",
+              "helpfulResource": {
+                "displayText": "Use an automated system to detect and classify data.  For example, Amazon Macie is a fully managed data security service that can help you identify sensitive data residing in Amazon S3. Macie automates the discovery of sensitive data, such as personally identifiable information (PII), to provide you with a better understanding of the data that your organization stores in Amazon S3.",
+                "url": "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html"
+              },
+              "improvementPlan": {
+                "displayText": "AWS Data Classification whitepaper",
+                "url": "https://docs.aws.amazon.com/whitepapers/latest/data-classification/welcome.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "SEC1_1 && SEC1_2 && SEC1_3 && SEC1_4",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "(!SEC1_1) || (!SEC1_2) || (!SEC1_3) || (!SEC1_4)",
+              "risk": "HIGH_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        },
+        {
+          "id": "SEC2",
+          "title": "How are you implementing least privilege access to health data?",
+          "description": "The ability to access health data should be limited to the people or systems who require the access to perform specific tasks.",
+          "choices": [
+            {
+              "id": "SEC2_1",
+              "title": "Use identity and access management to control access to systems, resources, and data",
+              "helpfulResource": {
+                "displayText": "Use AWS Identity and Access Management to control access to AWS services and resources. Use IAM to control who is authenticated to the environment and who is authorized to use services and resources.  Health data on the cloud is typically stored in databases, file systems, and object storage services. The optimal storage service is determined by the data type (for example, structured vs. unstructured) and access patterns required by the workload.  For each data store, use a combination of IAM permissions and any additional authorization methods to secure stored health data.",
+                "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html"
+              },
+              "improvementPlan": {
+                "displayText": "AWS Identity & Access Management (IAM) best practices",
+                "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "SEC2_1",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "(!SEC2_1)",
+              "risk": "HIGH_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        },
+        {
+          "id": "SEC3",
+          "title": "How are you logging access to health data?",
+          "description": "If your workload hosts health data you should implement and maintain logging of access to that data in accordance with the regulatory frameworks applicable to your workload.",
+          "choices": [
+            {
+              "id": "SEC3_1",
+              "title": "Log access to systems, resources, and data in accordance with your policies and procedures",
+              "helpfulResource": {
+                "displayText": "If your workload hosts health data, then under the Architecting for HIPAA Security and Compliance on Amazon Web Services whitepaper you must implement and maintain logging of access to that data in accordance with the regulatory frameworks applicable to your workload.",
+                "url": "https://docs.aws.amazon.com/whitepapers/latest/architecting-hipaa-security-and-compliance-on-aws/auditing-back-ups-and-disaster-recovery.html"
+              },
+              "improvementPlan": {
+                "displayText": "Architecting for HIPAA Security and Compliance on Amazon Web Services whitepaper",
+                "url": "https://docs.aws.amazon.com/whitepapers/latest/architecting-hipaa-security-and-compliance-on-aws/auditing-back-ups-and-disaster-recovery.html"
+              }
+            },
+            {
+              "id": "SEC3_2",
+              "title": "Configure audit logs to be centralized and immutable",
+              "helpfulResource": {
+                "displayText": "Configure logging to save to a centralized location and the logs made immutable to verify their integrity in the event of a forensic requirement. Prevent modification of log data by creating an AWS account in your organization that is designated to host audit logs and implement strict authorization rules. AWS audit and logging services, such as CloudWatch and CloudTrail, can save logs to a central location, yielding one set of logs that encompass an entire IT environment.",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/detective-controls.html"
+              },
+              "improvementPlan": {
+                "displayText": "Refer to the following resources to learn more about our best practices for security. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-1.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "SEC3_1 && SEC3_2",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "(!SEC3_1) || (!SEC3_2)",
+              "risk": "HIGH_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        },
+        {
+          "id": "SEC4",
+          "title": "How often do you review audit logs?",
+          "description": "In addition to the creation and documentation of an audit log review policy and procedure, organizations who are auditing access to health data should also have systems and procedures in place to review the audit logs on a regular basis",
+          "choices": [
+            {
+              "id": "SEC4_1",
+              "title": "Create, document, and follow a policy and procedure to regularly review audit logs",
+              "helpfulResource": {
+                "displayText": "In addition to the creation and documentation of an audit log review policy and procedure, organizations who are auditing access to health data should also have systems and procedures in place to review the audit logs on a regular basis. Facilitate audits by collecting all logs in a centralized location. For example, AWS CloudTrail can be configured to deliver logs from multiple accounts to a single Amazon S3 bucket. This provides both an easier location allowing regular review of the logs, while limiting the scope of access required for the reviewer by limiting them to a single location rather than multiple accounts. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/detective-controls.html"
+              },
+              "improvementPlan": {
+                "displayText": "Logging AWS CloudTrail Insights events for trails",
+                "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html"
+              }
+            },
+            {
+              "id": "SEC4_2",
+              "title": "Automate alerts for potential anomalies detected in logs",
+              "helpfulResource": {
+                "displayText": "Additionally, use automated systems that will generate alerts if anomalies are detected in logs.  For example, create CloudWatch alarms based on anomaly detection that uses previously recorded metrics to create a model of expected results.  You can also use the Amazon OpenSearch Service to detect anomalies in logs. Enable CloudTrail Insights to detect unusual operational activity that is recorded in your CloudTrail audit logs. Review all applicable regulatory frameworks and standards and ensuring the specific requirements are being met.  Configure all alarms to be received by an identified owner, ensuring that the alarm is acknowledged, triaged, and actioned. Finally, create and follow a procedure that outlines a regular cadence to review all automation configurations for continued accuracy, sufficiency, and relevance of the alerts. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/detective-controls.html"
+              },
+              "improvementPlan": {
+                "displayText": "Create a CloudWatch alarm based on anomaly detection",
+                "url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Anomaly_Detection_Alarm.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "SEC4_1 && SEC4_2",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "(!SEC4_1) || (!SEC4_2)",
+              "risk": "HIGH_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        },
+        {
+          "id": "SEC5",
+          "title": "How does your organization protect critical systems?",
+          "description": "Follow Well-Architected best practices for infrastructure protection when designing and managing your transactional systems of record.",
+          "helpfulResource": {
+            "displayText": "Follow Well-Architected best practices for infrastructure protection when designing and managing your transactional systems of record.",
+            "url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/infrastructure-protection.html"
+          },
+          "choices": [
+            {
+              "id": "SEC5_1",
+              "title": "Implement security controls necessary to protect the infrastructure within the AWS account",
+              "helpfulResource": {
+                "displayText": "Security controls are the technical or administrative mechanisms you put in place to implement the standards. All security controls map to standards, but not all standards map to security controls. Testing of security controls is designed to monitor and measure whether you are effectively meeting the defined standards.",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/welcome.html"
+              },
+              "improvementPlan": {
+                "displayText": "Security Pillar - AWS Well-Architected Framework",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/welcome.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "SEC5_1",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "(!SEC5_1)",
+              "risk": "HIGH_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        },
+        {
+          "id": "SEC6",
+          "title": "How do you determine and enforce data residency requirements?",
+          "description": "Many healthcare organizations fall under data locality requirements or regulations on where data may be physically located.",
+          "choices": [
+            {
+              "id": "SEC6_1",
+              "title": "Determine applicable regulatory frameworks and controls as it pertains to data locality",
+              "helpfulResource": {
+                "displayText": "Begin by reviewing these requirements within any applicable regulatory frameworks.",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/data-protection.html"
+              },
+              "improvementPlan": {
+                "displayText": "Learn more about considerations when determining applicable regulatory frameworks",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/data-protection.html"
+              }
+            },
+            {
+              "id": "SEC6_2",
+              "title": "Enforce data locality requirements by implementing controls",
+              "helpfulResource": {
+                "displayText": "Once the determination of requirements has been made and documented, technical controls can be put in place to enforce them. ",
+                "url": "http://aws.amazon.com/about-aws/whats-new/2021/11/aws-control-tower-controls-data-residency-requirements/"
+              },
+              "improvementPlan": {
+                "displayText": "AWS Control Tower now provides controls to meet data residency requirements",
+                "url": "http://aws.amazon.com/about-aws/whats-new/2021/11/aws-control-tower-controls-data-residency-requirements/"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "SEC6_1 && SEC6_2",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "(!SEC6_1) || (!SEC6_2)",
+              "risk": "HIGH_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        },
+        {
+          "id": "SEC7",
+          "title": "How are you protecting health data at rest and in transit?",
+          "description": "Protect all sensitive data stored and transmitted within a cloud environment with encryption services.",
+          "choices": [
+            {
+              "id": "SEC7_1",
+              "title": "Encrypt sensitive health data at rest and in transit at all times",
+              "helpfulResource": {
+                "displayText": "Protect all sensitive data stored and transmitted within a cloud environment with AWS encryption services. The AWS Business Associate Addendum (BAA), applicable to customers who align with the Health Insurance Portability and Accountability Act (HIPAA), requires the encryption of protected health information (PHI) as defined by HIPAA at rest and in transit. Encryption at rest and in transit may be required by other applicable frameworks. ",
+                "url": "https://docs.aws.amazon.com/whitepapers/latest/logical-separation/encrypting-data-at-rest-and--in-transit.html"
+              },
+              "improvementPlan": {
+                "displayText": "Encrypting Data-at-Rest and Data-in-Transit",
+                "url": "https://docs.aws.amazon.com/whitepapers/latest/logical-separation/encrypting-data-at-rest-and--in-transit.html"
+              }
+            },
+            {
+              "id": "SEC7_2",
+              "title": "Implement encryption controls as part of the infrastructure architecture",
+              "helpfulResource": {
+                "displayText": "Use infrastructure as code to declare encryption as a configuration when creating an environment template. Use alerts and automated remediation, where possible, with AWS Config that can detect when a resource is not configured to use encryption. Where automated remediation is not available, verify that alerts are generated and sent to the appropriate parties. ",
+                "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/data-protection.html"
+              },
+              "improvementPlan": {
+                "displayText": "Data protection in Amazon EC2",
+                "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/data-protection.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "SEC7_1 && SEC7_2",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "(!SEC7_1) || (!SEC7_2)",
+              "risk": "HIGH_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        },
+        {
+          "id": "SEC8",
+          "title": "How do you isolate sensitive data?",
+          "description": "Organizations working with health data should take steps to isolate and segment health data from non-health data.",
+          "choices": [
+            {
+              "id": "SEC8_1",
+              "title": "Isolate health data from non-health data",
+              "helpfulResource": {
+                "displayText": "Organizations working with health data should take steps to isolate and segment health data from non-health data. In conjunction with the recommendations around data discovery and classification, it is important to separate health data so the organization can implement the necessary technical and administrative controls. ",
+                "url": "https://docs.aws.amazon.com/whitepapers/latest/organizing-your-aws-environment/organizing-your-aws-environment.html"
+              },
+              "improvementPlan": {
+                "displayText": "Organizing Your AWS Environment Using Multiple Accounts AWS whitepaper",
+                "url": "https://docs.aws.amazon.com/whitepapers/latest/organizing-your-aws-environment/organizing-your-aws-environment.html"
+              }
+            },
+            {
+              "id": "SEC8_2",
+              "title": "Limit access to health data",
+              "helpfulResource": {
+                "displayText": "It is also important to limit access to health data within an account. Use resource isolation, such as designated Amazon S3 buckets, to separate health data from non-health data. Resource isolation can also be used to isolate tenants and tenant-specific data. Resource isolation and tenant isolation reinforce the benefits to account isolation, limiting access to sensitive data to only the people and systems that require it, without unnecessarily blocking access to less sensitive data. Refer to the Security pillar section of the Well-Architected Framework SaaS Lens for additional recommendations on tenant isolation. ",
+                "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html"
+              },
+              "improvementPlan": {
+                "displayText": "AWS Identity & Access Management documentation: IAM Condition policy elements",
+                "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "SEC8_1 && SEC8_2",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "(!SEC8_1) || (!SEC8_2)",
+              "risk": "HIGH_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        },
+        {
+          "id": "SEC9",
+          "title": "What is your disaster recovery for critical systems?",
+          "description": "Create policies, procedures, and playbooks designed to respond to and mitigate the potential impact of a security event or natural disaster.",
+          "choices": [
+            {
+              "id": "SEC9_1",
+              "title": "Mitigate and respond to potential incidents by creating policies, procedures, and playbooks",
+              "helpfulResource": {
+                "displayText": "Healthcare, and heath data, are valuable targets for malicious actors. Create policies, procedures, and playbooks designed to respond to and mitigate the potential impact of a security event or natural disaster. This includes exercises that practice the response to a simulated incident using the defined policies, procedures, and playbooks to prepare your organization. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/incident-response.html"
+              },
+              "improvementPlan": {
+                "displayText": "AWS Well-Architected - Security Pillar: Incident response",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/incident-response.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "SEC9_1",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "(!SEC9_1)",
+              "risk": "HIGH_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "REL1",
+      "name": "Reliability",
+      "questions": [
+        {
+          "id": "REL1",
+          "title": "How does your system adapt to changes in demand?",
+          "description": "Where possible, implement architectures that automatically adapt to changes in demand.",
+          "helpfulResource": {
+            "displayText": "To achieve reliability, a system must have a well-planned foundation in place, with mechanisms for handling changes in demand or requirements. The system should be designed to detect failure and automatically repair itself. ",
+            "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/foundations.html"
+          },
+          "choices": [
+            {
+              "id": "REL1_1",
+              "title": "Architect systems for elasticity",
+              "helpfulResource": {
+                "displayText": "Healthcare applications often have time-based peaks in demand. For example, clinical systems may need to respond to periods of high demand using either time-based or usage-based metrics to define automatic scaling rules. An example of periods of high demand could be daytime business hours or a known event such as open-enrollment for an insurance provider.  Embracing elasticity enables healthcare organizations to right-size performance during all hours of the day while minimizing excess cost. General distributed systems recommendations apply.",
+                "url": "https://docs.aws.amazon.com/autoscaling/application/userguide/integrated-services-list.html"
+              },
+              "improvementPlan": {
+                "displayText": "Refer to the following resources to learn more about our best practices related to reliability. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-2.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "REL1_1",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "(!REL1_1)",
+              "risk": "HIGH_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        },
+        {
+          "id": "REL2",
+          "title": "How do you ensure acceptable network availability for your healthcare workloads?",
+          "description": "When evaluating your network setup, consider your business continuity and disaster recovery requirements.",
+          "helpfulResource": {
+            "displayText": "To achieve reliability, a system must have a well-planned foundation in place, with mechanisms for handling changes in demand or requirements. The system should be designed to detect failure and automatically repair itself. ",
+            "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/workload-architecture.html"
+          },
+          "choices": [
+            {
+              "id": "REL2_1",
+              "title": "Architect network connections for redundancy",
+              "helpfulResource": {
+                "displayText": "Healthcare applications require secure connectivity between the cloud and on-premises resources and users.  Certain healthcare applications are more latency-sensitive than others.  Consider business continuity and disaster recovery network requirements.",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/workload-architecture.html"
+              },
+              "improvementPlan": {
+                "displayText": "AWS Well-Architected - Reliability Pillar: Plan your network topology",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/plan-your-network-topology.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "REL2_1",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "(!REL2_1)",
+              "risk": "HIGH_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PERF1",
+      "name": "Performance Efficiency",
+      "questions": [
+        {
+          "id": "PERF_1",
+          "title": "How do you encrypt data while ensuring performance?",
+          "description": "Evaluate and select encryption services and technology that minimize performance impacts.",
+          "helpfulResource": {
+            "displayText": "Often, multiple approaches are required to get optimal performance across a workload. Well-architected systems use multiple solutions and enable different features to improve performance.",
+            "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/performance-architecture.html"
+          },
+          "choices": [
+            {
+              "id": "PERF_1_1",
+              "title": "Offload encryption to hardware",
+              "helpfulResource": {
+                "displayText": "Certain encryption approaches, such as VPN tunnels or IPsec meshes, can impact performance when implemented at scale. Where possible, offload encryption to hardware to maintain security while improving performance.",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-3.html"
+              },
+              "improvementPlan": {
+                "displayText": "AWS Nitro System:  A combination of dedicated hardware and lightweight hypervisor enabling faster innovation and enhanced security",
+                "url": "http://aws.amazon.com/ec2/nitro/"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "PERF_1_1",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "(!PERF_1_1)",
+              "risk": "HIGH_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        },
+        {
+          "id": "PERF_2",
+          "title": "How do you select your compute solution ?",
+          "description": "Evaluate and select the compute solution that meets your business requirements.",
+          "helpfulResource": {
+            "displayText": "The optimal compute choice for a particular workload can vary based on application design, usage patterns, and configuration settings. Architectures may use different compute choices for various components and enable different features to improve performance. Selecting the wrong compute choice for an architecture can lead to lower performance efficiency.",
+            "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/compute-selection.html"
+          },
+          "choices": [
+            {
+              "id": "PERF_2_1",
+              "title": "Select compute services that meet regulatory and performance requirements",
+              "helpfulResource": {
+                "displayText": "Healthcare requirements for compute are generally consistent with other industries. Healthcare applications can take advantage of virtual machines, containers, or serverless technologies.",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-3.html"
+              },
+              "improvementPlan": {
+                "displayText": "Data protection in Amazon EC2",
+                "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/data-protection.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "PERF_2_1",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "(!PERF_2_1)",
+              "risk": "HIGH_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        },
+        {
+          "id": "PERF_3",
+          "title": "How do you define and test storage performance requirements?",
+          "description": "Evaluate and select a storage architecture that meets your business requirements.",
+          "helpfulResource": {
+            "displayText": "Cloud storage is a critical component of cloud computing, holding the information used by your workload. Cloud storage is typically more reliable, scalable, and secure than traditional on-premises storage systems. Select from object, block, and file storage services as well as cloud data migration options for your workload.",
+            "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/perf-storage.html"
+          },
+          "choices": [
+            {
+              "id": "PERF_3_1",
+              "title": "Select the appropriate storage solution based on the use case",
+              "helpfulResource": {
+                "displayText": "The optimal storage solution for a system varies based on the kind of access method (block, file, or object), patterns of access (random or sequential), required throughput, frequency of access (online, offline, archival), frequency of update (WORM, dynamic), and availability and durability constraints. Well-architected systems use multiple storage solutions and enable different features to improve performance and use resources efficiently.",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-3.html"
+              },
+              "improvementPlan": {
+                "displayText": "Cloud Storage on AWS",
+                "url": "https://aws.amazon.com/products/storage/"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "PERF_3_1",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "(!PERF_3_1)",
+              "risk": "HIGH_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "COST1",
+      "name": "Cost Optimization",
+      "questions": [
+        {
+          "id": "COST1",
+          "title": "How do you define and enforce data retention policies?",
+          "description": "Healthcare organizations may be subject to regulatory and company requirements dictating how long they must store both health data as well as logs detailing access to that data.",
+          "helpfulResource": {
+            "displayText": "Organizations typically operate multiple workloads run by multiple teams. These teams can be in different organization units, each with its own\nrevenue stream. The capability to attribute resource costs to the workloads, individual organization, or product owners drives efficient usage behavior and helps reduce waste.",
+            "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/expenditure-and-usage-awareness.html"
+          },
+          "choices": [
+            {
+              "id": "COST1_1",
+              "title": "Determine applicable regulatory frameworks and controls as it pertains to data retention",
+              "helpfulResource": {
+                "displayText": "Organizations may be subject to regulatory and company requirements dictating data retention requirements. Developing strategies for data retention is imperative to maintain compliance while minimizing cost. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/data-retention.html"
+              },
+              "improvementPlan": {
+                "displayText": "Refer to the following resources to learn more about our best practices related to cost optimization. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-4.html"
+              }
+            },
+            {
+              "id": "COST1_2",
+              "title": "Implement data lifecycle policies",
+              "helpfulResource": {
+                "displayText": "Implement lifecycle policies that transition infrequently-accessed data to lower-cost storage tiers.  For example, use Amazon S3 Lifecycle configurations to archive infrequently accessed data after some period of time, automatically reducing storage costs. Alternatively, use Amazon S3 Intelligent-Tiering to shift the archival policies to focus on time of last access instead of time the object has been in Amazon S3. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/data-retention.html"
+              },
+              "improvementPlan": {
+                "displayText": "Refer to the following resources to learn more about our best practices related to cost optimization. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-4.html"
+              }
+            },
+            {
+              "id": "COST1_3",
+              "title": "Centralize automated policy enforcement",
+              "helpfulResource": {
+                "displayText": "Adopting infrastructure as code, enables you to define and test your data retention policies before they make it into production.   For example, if regulatory requirements specify that you must retain certain medical images for 10 years, you can verify that no Amazon S3 lifecycle policy expires an object before that time. Additionally, consider AWS Backup for centralized backup management, which enables you to back up application data in a consistent and compliant manner.",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/data-retention.html"
+              },
+              "improvementPlan": {
+                "displayText": "Refer to the following resources to learn more about our best practices related to cost optimization. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-4.html"
+              }
+            },
+            {
+              "id": "COST1_4",
+              "title": "Validate lifecycle policies are enforced by enabling monitoring and alerts.",
+              "helpfulResource": {
+                "displayText": "Because the cloud is API-driven, you can monitor changes to your environment as described in the operational excellence and security tiers. Set up alerts for when an API action alters a data retention policy so you can quickly review the change to make sure it was authorized and operating correctly. If using AWS Backup, use AWS Backup Audit Manager to automatically detect when your AWS Backup policies violate your data retention requirements. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/data-retention.html"
+              },
+              "improvementPlan": {
+                "displayText": "Refer to the following resources to learn more about our best practices related to cost optimization. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-4.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "COST1_1 && COST1_2 && COST1_3 && COST1_4",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "(!COST1_1) || (!COST1_3)",
+              "risk": "HIGH_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SUS1",
+      "name": "Sustainability",
+      "questions": [
+        {
+          "id": "SUS1",
+          "title": "How do you identify targets for sustainability improvement?",
+          "description": "Regular review of cloud architecture for optimization opportunities can reduce carbon footprints as well. ",
+          "helpfulResource": {
+            "displayText": "Prioritize targets for improvement by reviewing your workloads against the sustainability principles",
+            "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/best-practices-for-sustainability-in-the-cloud.html"
+          },
+          "choices": [
+            {
+              "id": "SUS1_1",
+              "title": "Identify on-premises workloads that can be moved to the cloud",
+              "helpfulResource": {
+                "displayText": "Migrating workloads from on-premises data centers to the cloud can reduce the carbon footprint of the workload by 88%.",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/best-practices-for-sustainability-in-the-cloud.html"
+              },
+              "improvementPlan": {
+                "displayText": "AWS Well-Architected Framework - Sustainability Pillar",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sustainability-pillar.html"
+              }
+            },
+            {
+              "id": "SUS1_2",
+              "title": "Regular review of cloud architecture for optimization opportunities can reduce carbon footprints.",
+              "helpfulResource": {
+                "displayText": "Continuous optimization of cloud architectures can result in a reduced carbon footprint.",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/best-practices-for-sustainability-in-the-cloud.html"
+              },
+              "improvementPlan": {
+                "displayText": "AWS Well-Architected Framework - Sustainability Pillar",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sustainability-pillar.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "SUS1_1 && SUS1_2",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        },
+        {
+          "id": "SUS2",
+          "title": "How do you match workload infrastructure to user behavior patterns?",
+          "description": "Consider cloud-native ways to meet business requirements with an elastic, efficient architecture.",
+          "choices": [
+            {
+              "id": "SUS2_1",
+              "title": "Scale infrastructure to continually match user demand and performance requirements",
+              "helpfulResource": {
+                "displayText": "Many healthcare workloads are life-critical, and have steady demand 24 x 7. However, other workloads (such as those supporting ambulatory care delivery or revenue cycle workflows) exhibit cyclical utilization patterns with peak demand during business hours. Minimize the amount of hardware used by scaling workloads down during periods of low demand. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/use-the-minimum-amount-of-hardware-to-meet-your-needs.html"
+              },
+              "improvementPlan": {
+                "displayText": "Scale workload infrastructure dynamically",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sus_sus_user_a2.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "SUS2_1",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        },
+        {
+          "id": "SUS3",
+          "title": "Does your organization monitor workload activity and remove or refactor components that are no longer necessary?",
+          "description": "Does your organization monitor workload activity and remove or refactor components that are no longer necessary?",
+          "choices": [
+            {
+              "id": "SUS3_1",
+              "title": "Analyze demand on workloads to identify components that can be removed or refactored.",
+              "helpfulResource": {
+                "displayText": "Analyze demand on workloads to identify components that can be removed or refactored. Then, engage component owners and stakeholders to redesign clinical workflows, and decrease workload infrastructure",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/remove-or-refactor-workload-components-with-low-or-no-use.html"
+              },
+              "improvementPlan": {
+                "displayText": "Remove or refactor workload components with low or no use",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sus_sus_software_a3.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "SUS3_1",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        },
+        {
+          "id": "SUS4",
+          "title": "How do you optimize the impact of and applications and the equipment that run them?",
+          "description": "It is recommended to optimize impact on customer devices and equipment.",
+          "choices": [
+            {
+              "id": "SUS4_1",
+              "title": "Evaluate the overall impact of applications, devices, and equipment",
+              "helpfulResource": {
+                "displayText": "As new features are released for a healthcare application, build those features as backward compatible, minimizing the need for new hardware.  Additionally, evaluate the potential impact of new or upgraded hardware requirements to minimize the overall impact when architecting new workloads or features. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sustainability-pillar.html"
+              },
+              "improvementPlan": {
+                "displayText": "Optimize impact on customer devices and equipment",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sus_sus_software_a4.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "SUS4_1",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        },
+        {
+          "id": "SUS5",
+          "title": "How does your organization measure the effectiveness of sustainability efforts?",
+          "description": "Adding metrics to quantify sustainability improvement can better align business interests with sustainability goals.",
+          "choices": [
+            {
+              "id": "SUS5_1",
+              "title": "Quantify and report results to drive continuous improvement processes",
+              "helpfulResource": {
+                "displayText": "The healthcare vertical extensively uses metrics and measures to quantify care quality, effectiveness, and patient experience. Adding metrics to quantify sustainability improvement can better align business interests with sustainability goals. Further, analysis of such reporting can help identify repeatable processes for achieving sustainability improvements. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/measure-results.html"
+              },
+              "improvementPlan": {
+                "displayText": " Refer to the following resources to learn more about our best practices related to sustainability. ",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/healthcare-industry-lens/resources-5.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "SUS5_1",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        },
+        {
+          "id": "SUS6",
+          "title": "How does your organization remove unneeded or redundant health data?",
+          "description": "Begin by reviewing and classifying data in line with your business and regulatory requirements, such as how long health data records must be retained.",
+          "choices": [
+            {
+              "id": "SUS6_1",
+              "title": "Automate data retention processes that retain the minimum amount of health data required to meet regulatory and business requir",
+              "helpfulResource": {
+                "displayText": "Regulatory requirements may impose data retention periods on healthcare providers and ISVs.  However, it is common for health data to be retained in perpetuity, well beyond its useful life.",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/remove-unneeded-or-redundant-data.html"
+              },
+              "improvementPlan": {
+                "displayText": "Remove unneeded or redundant data",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sus_sus_data_a6.html"
+              }
+            }
+          ],
+          "riskRules": [
+            {
+              "condition": "SUS6_1",
+              "risk": "NO_RISK"
+            },
+            {
+              "condition": "default",
+              "risk": "MEDIUM_RISK"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ready": true
 }
